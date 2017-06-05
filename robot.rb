@@ -1,18 +1,19 @@
-require "rubygems"
-require "bundler/setup"
+require 'rubygems'
+require 'bundler/setup'
+require_relative 'placement'
 
 class Robot
-  FACE = { NORTH: 'NORTH', SOUTH: 'SOUTH', EAST: 'EAST', WEST: 'WEST' }.freeze
   DIMENSION = 5
-  attr_reader :x, :y, :face
 
   def initialize(x:, y:, face:)
-    @x = x
-    @y = y
-    @face = face
+    @placement = Placement.new(x: x, y: y, face: face)
   end
 
   def report
-    { x: x, y: y, face: face }
+    placement.print
   end
+
+  private
+
+  attr_reader :placement
 end
