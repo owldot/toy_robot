@@ -10,6 +10,10 @@ class Placement
     @x, @y, @face = x, y, face
   end
 
+  def ==(other_placement)
+    x == other_placement.x && y == other_placement.y && face == other_placement.face
+  end
+
   def print
     "#{x}, #{y}, #{face}"
   end
