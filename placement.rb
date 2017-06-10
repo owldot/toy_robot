@@ -18,6 +18,10 @@ class Placement
     "#{x}, #{y}, #{face}"
   end
 
+  def valid?
+    correct_face?(face) && correct_xy?(x, y)
+  end
+
   private
 
   def correct_face?(face)
