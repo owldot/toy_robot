@@ -13,6 +13,22 @@ class Robot
     placement.print
   end
 
+  def move
+    new_placement = placement
+    case placement.face
+      when Placement::FACE[:SOUTH]
+        new_placement = Placement.new(x: placement.x, y: placement.y - 1, face: placement.face)
+      when Placement::FACE[:NORTH]
+        new_placement = Placement.new(x: placement.x, y: placement.y + 1, face: placement.face)
+      when Placement::FACE[:EAST]
+        new_placement = Placement.new(x: placement.x + 1, y: placement.y, face: placement.face)
+      when Placement::FACE[:WEST]
+        new_placement = Placement.new(x: placement.x - 1, y: placement.y, face: placement.face)
+    end
+
+    @placement = new_placement if new_placement.valid?
+  end
+
   private
 
   attr_reader :placement
