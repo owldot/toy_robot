@@ -6,7 +6,7 @@ class Placement
   attr_reader :x, :y, :face
 
   def initialize(x:, y:, face:)
-    raise 'Incorrect input' unless correct_face?(face) && correct_xy?(x, y)
+    raise InvalidPlacement unless correct_face?(face) && correct_xy?(x, y)
     @x, @y, @face = x, y, face
   end
 
@@ -31,5 +31,11 @@ class Placement
   def correct_xy?(x, y)
     x >= 0 && x < DIMENSION &&
       y >=0 && y < DIMENSION
+  end
+end
+
+class InvalidPlacement < StandardError
+  def message
+    'Incorrect input'
   end
 end
