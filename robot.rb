@@ -7,13 +7,17 @@ class Robot
 
   def place(x:, y:, face:)
     @placement = Placement.new(x: x, y: y, face: face)
+  rescue InvalidPlacement
+    # robot ignores invalid move
   end
 
   def report
-    placement.print
+    placement.print unless placement.nil?
   end
 
   def move
+    return if placement.nil?
+
     new_placement = placement
     case placement.face
       when Placement::FACE[:SOUTH]
@@ -27,6 +31,8 @@ class Robot
     end
 
     @placement = new_placement if new_placement.valid?
+  rescue InvalidPlacement
+    # robot ignores invalid move
   end
 
   private

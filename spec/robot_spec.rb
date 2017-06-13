@@ -19,28 +19,38 @@ RSpec.describe Robot do
   end
 
   describe '#move' do
-    it 'moves to SOUTH' do
-      subject.place(x: 1, y: 2, face: 'SOUTH')
-      subject.move
-      expect(subject.report).to eq '1, 1, SOUTH'
+    context 'valid placement' do
+      it 'moves to SOUTH' do
+        subject.place(x: 1, y: 2, face: 'SOUTH')
+        subject.move
+        expect(subject.report).to eq '1, 1, SOUTH'
+      end
+
+      it 'moves to NORTH' do
+        subject.place(x: 1, y: 2, face: 'NORTH')
+        subject.move
+        expect(subject.report).to eq '1, 3, NORTH'
+      end
+
+      it 'moves to EAST' do
+        subject.place(x: 1, y: 2, face: 'EAST')
+        subject.move
+        expect(subject.report).to eq '2, 2, EAST'
+      end
+
+      it 'moves to WEST' do
+        subject.place(x: 1, y: 2, face: 'WEST')
+        subject.move
+        expect(subject.report).to eq '0, 2, WEST'
+      end
     end
 
-    it 'moves to NORTH' do
-      subject.place(x: 1, y: 2, face: 'NORTH')
-      subject.move
-      expect(subject.report).to eq '1, 3, NORTH'
-    end
-
-    it 'moves to EAST' do
-      subject.place(x: 1, y: 2, face: 'EAST')
-      subject.move
-      expect(subject.report).to eq '2, 2, EAST'
-    end
-
-    it 'moves to WEST' do
-      subject.place(x: 1, y: 2, face: 'WEST')
-      subject.move
-      expect(subject.report).to eq '0, 2, WEST'
+    context 'invalid placement' do
+      it 'ignores move' do
+        subject.place(x: 0, y: 5, face: 'WEST')
+        subject.move
+        expect(subject.report).to eq nil
+      end
     end
   end
 end
