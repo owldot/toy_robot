@@ -3,19 +3,19 @@ require "./robot"
 RSpec.describe Placement do
   context 'valid input' do
     it 'expects initialize object' do
-      expect { described_class.new(x: 0, y: 0, face: 'NORTH') }.not_to raise_error
+      expect { described_class.new(x: 0, y: 0, face: 'NORTH') }.not_to raise_error InvalidPlacement
     end
   end
 
   context 'invalid input' do
     it 'expects to raise error with incorrect x' do
-      expect { described_class.new(x: 6, y: 0, face: 'NORTH') }.to raise_error 'Incorrect input'
+      expect { described_class.new(x: 6, y: 0, face: 'NORTH') }.to raise_error InvalidPlacement
     end
     it 'expects to raise error with incorrect y' do
-      expect { described_class.new(x: 3, y: -1, face: 'NORTH') }.to raise_error 'Incorrect input'
+      expect { described_class.new(x: 3, y: -1, face: 'NORTH') }.to raise_error InvalidPlacement
     end
     it 'expects to raise error with incorrect face' do
-      expect { described_class.new(x: 6, y: 0, face: 'SOMEWHERE') }.to raise_error 'Incorrect input'
+      expect { described_class.new(x: 6, y: 0, face: 'SOMEWHERE') }.to raise_error InvalidPlacement
     end
   end
 
