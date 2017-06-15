@@ -52,22 +52,7 @@ class Robot
   attr_reader :placement
 
   def turn(side)
-    new_placement = Placement.new(x: placement.x, y: placement.y, face: turn_rules(face: placement.face, side: side))
+    new_placement = Placement.new(x: placement.x, y: placement.y, face: Placement.turn(face: placement.face, side: side))
     @placement = new_placement if new_placement.valid?
-  end
-
-  def turn_rules(side:, face:)
-    rules = {
-      'EAST' => 'NORTH',
-      'NORTH' => 'WEST',
-      'WEST' => 'SOUTH',
-      'SOUTH' => 'EAST'
-    }
-
-    if side == :left
-      rules[face]
-    elsif side == :right
-      rules.key(face)
-    end
   end
 end

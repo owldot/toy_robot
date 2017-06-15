@@ -1,6 +1,14 @@
 require 'pry'
 class Placement
   FACE = { NORTH: 'NORTH', SOUTH: 'SOUTH', EAST: 'EAST', WEST: 'WEST' }.freeze
+
+  TURN_RULES = {
+    FACE[:EAST] => FACE[:NORTH],
+    FACE[:NORTH] => FACE[:WEST],
+    FACE[:WEST] => FACE[:SOUTH],
+    FACE[:SOUTH] => FACE[:EAST]
+  }.freeze
+
   DIMENSION = 5
 
   attr_reader :x, :y, :face
@@ -20,6 +28,14 @@ class Placement
 
   def valid?
     correct_face?(face) && correct_xy?(x, y)
+  end
+
+  def self.turn(side:, face:)
+    if side == :left
+      TURN_RULES[face]
+    elsif side == :right
+      TURN_RULES.key(face)
+    end
   end
 
   private
