@@ -53,4 +53,56 @@ RSpec.describe Robot do
       end
     end
   end
+
+  describe '#left' do
+    it 'turns from EAST to NORTH' do
+      subject.place(x: 0, y: 0, face: 'EAST')
+      subject.left
+      expect(subject.report).to eq '0, 0, NORTH'
+    end
+
+    it 'turns from NORTH to WEST' do
+      subject.place(x: 0, y: 0, face: 'NORTH')
+      subject.left
+      expect(subject.report).to eq '0, 0, WEST'
+    end
+
+    it 'turns from WEST to SOUTH' do
+      subject.place(x: 0, y: 0, face: 'WEST')
+      subject.left
+      expect(subject.report).to eq '0, 0, SOUTH'
+    end
+
+    it 'turns from SOUTH to EAST' do
+      subject.place(x: 0, y: 0, face: 'SOUTH')
+      subject.left
+      expect(subject.report).to eq '0, 0, EAST'
+    end
+  end
+
+  describe '#right' do
+    it 'turns from EAST to SOUTH' do
+      subject.place(x: 0, y: 0, face: 'EAST')
+      subject.right
+      expect(subject.report).to eq '0, 0, SOUTH'
+    end
+
+    it 'turns from SOUTH to WEST' do
+      subject.place(x: 0, y: 0, face: 'SOUTH')
+      subject.right
+      expect(subject.report).to eq '0, 0, WEST'
+    end
+
+    it 'turns from WEST to NORTH' do
+      subject.place(x: 0, y: 0, face: 'WEST')
+      subject.right
+      expect(subject.report).to eq '0, 0, NORTH'
+    end
+
+    it 'turns from NORTH to EAST' do
+      subject.place(x: 0, y: 0, face: 'NORTH')
+      subject.right
+      expect(subject.report).to eq '0, 0, EAST'
+    end
+  end
 end
