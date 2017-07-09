@@ -5,7 +5,7 @@ require_relative 'placement'
 class Robot
   DIMENSION = 5
 
-  def place(x:, y:, face:)
+  def place(x, y, face)
     @placement = Placement.new(x: x, y: y, face: face)
   rescue InvalidPlacement
     # robot ignores invalid move
