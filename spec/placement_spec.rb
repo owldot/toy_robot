@@ -22,7 +22,7 @@ RSpec.describe Placement do
   describe '#print' do
     subject { described_class.new(x: 1, y: 2, face: 'SOUTH') }
     it 'prints position' do
-      expect(subject.print).to eq('1, 2, SOUTH')
+      expect(subject.print).to eq('1,2,SOUTH')
     end
   end
 

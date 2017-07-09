@@ -23,7 +23,7 @@ class Placement
   end
 
   def print
-    "#{x}, #{y}, #{face}"
+    "#{x},#{y},#{face}"
   end
 
   def valid?
