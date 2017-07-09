@@ -1,4 +1,3 @@
-require 'pry'
 class Placement
   FACE = { NORTH: 'NORTH', SOUTH: 'SOUTH', EAST: 'EAST', WEST: 'WEST' }.freeze
 

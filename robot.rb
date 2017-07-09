@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'bundler/setup'
-require_relative 'placement'
-
 class Robot
   DIMENSION = 5
 
@@ -12,7 +8,7 @@ class Robot
   end
 
   def report
-    placement.print unless placement.nil?
+    puts placement.print unless placement.nil?
   end
 
   def move
