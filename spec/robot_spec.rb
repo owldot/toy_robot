@@ -1,4 +1,4 @@
-require "./robot"
+require 'spec_helper'
 
 RSpec.describe Robot do
   subject { described_class.new }

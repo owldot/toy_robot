@@ -1,5 +1,4 @@
-require './executor'
-require './robot'
+require 'spec_helper'
 
 RSpec.describe Executor do
   let(:robot) { Robot.new }

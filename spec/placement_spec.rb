@@ -1,4 +1,4 @@
-require "./robot"
+require 'spec_helper'
 
 RSpec.describe Placement do
   context 'valid input' do
