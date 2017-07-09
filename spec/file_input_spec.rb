@@ -3,6 +3,11 @@ require 'spec_helper'
 RSpec.describe FileInput do
   let(:executor) {Executor.new}
 
+  subject do
+    expect_any_instance_of(described_class).to receive(:commands_from).and_return(commands)
+    described_class.new(file: 'whatever', executor: executor)
+  end
+
   describe '#execute' do
     context 'first example' do
       let(:commands) do
@@ -11,11 +16,6 @@ RSpec.describe FileInput do
           'MOVE',
           'REPORT'
         ]
-      end
-
-      subject do
-        expect_any_instance_of(described_class).to receive(:commands_from).and_return(commands)
-        described_class.new(file: 'whatever', executor: executor)
       end
 
       it 'expects to report 0,1,NORTH ' do
@@ -31,11 +31,6 @@ RSpec.describe FileInput do
           'LEFT',
           'REPORT'
         ]
-      end
-
-      subject do
-        expect_any_instance_of(described_class).to receive(:commands_from).and_return(commands)
-        described_class.new(file: 'whatever', executor: executor)
       end
 
       it 'expects to report 0,0,WEST' do
@@ -54,11 +49,6 @@ RSpec.describe FileInput do
           'MOVE',
           'REPORT'
         ]
-      end
-
-      subject do
-        expect_any_instance_of(described_class).to receive(:commands_from).and_return(commands)
-        described_class.new(file: 'whatever', executor: executor)
       end
 
       it 'expects to report 3,3,NORTH' do
