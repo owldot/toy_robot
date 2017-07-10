@@ -8,7 +8,7 @@ class Robot
   end
 
   def report
-    puts placement.print unless placement.nil?
+    placement.print unless placement.nil?
   end
 
   def move

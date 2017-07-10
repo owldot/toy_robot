@@ -10,7 +10,7 @@ class Executor
     args = extract_args(command_line[1])
     return nil unless robot.methods.include? command
 
-    robot.public_send(command, *args)
+    print_out(robot.public_send(command, *args))
   end
 
   private
@@ -27,5 +27,13 @@ class Executor
         arg
       end
     end
+  end
+
+  def print_out(result)
+    if result.is_a? String
+      puts result
+    end
+
+    result
   end
 end
