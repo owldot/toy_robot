@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-RSpec.describe FileInput do
+RSpec.describe Runner do
   let(:executor) {Executor.new}
 
   subject do
-    expect_any_instance_of(described_class).to receive(:commands_from).and_return(commands)
-    described_class.new(file: 'whatever', executor: executor)
+    described_class.new(source: commands, executor: executor)
   end
 
   describe '#execute' do

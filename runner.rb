@@ -1,26 +1,17 @@
-#!/usr/bin/env ruby
-require 'rubygems'
-require 'bundler/setup'
+class Runner
 
-require 'pry'
-require_relative 'executor'
-require_relative 'placement'
-require_relative 'robot'
-require_relative 'file_input'
+  def initialize(source:, executor: Executor.new)
+    @executor = executor
+    @commands = source
+  end
 
+  def execute
+    commands.each do |command|
+      executor.command(command)
+    end
+  end
 
-def run
-  file_input = FileInput.new(file: ARGV[0])
-  file_input.execute
-end
+  private
 
-def print_usage
-  puts "Usage: ./run robot.commands"
-end
-
-if ARGV.size < 1
-  print_usage
-  exit 1
-else
-  run
+  attr_reader :executor, :commands
 end
